@@ -1,0 +1,89 @@
+﻿ @{
+    ViewBag.Title = "Configuraeeeeeció";
+}
+<script>
+    function VisibilitatSumes() {
+        if (document.getElementById("MSumes").checked) {
+            ConfSumes.innerHTML =  '<table width="100%" border = 2 ><tr><th width="55%" >  OPCIONS DE SUMES   </th > <th>' +
+                                   '<label style = "width: 150px ;text-align: left ">Número de Files:</label >' +
+                                   '<input type = "number" name="N_Sumes_NumFilas" value="2" min="2" max="10" style="width: 50px ;text-align: right" /> <br />' +
+                                   '<label style = "width: 150px ;text-align: left ">Número de Xifres:</label >' +
+                                   '<input type = "number" name="N_Sumes_NumCifras" value="2" min="1" max="10" style="width: 50px ;text-align: right" />' +
+                                   '</th ></tr ></table > ';
+        }
+        else {
+            ConfSumes.innerHTML = '';
+        }
+    };
+
+    function VisibilitatRestes() {
+        if (document.getElementById("MRestes").checked) {
+            ConfRestes.innerHTML =  '<table width="100%" border = 2 ><tr><th width="55%" >  OPCIONS DE RESTES   </th > <th>' +
+                                    '<label style = "width: 150px ;text-align: left ">Número de Files:</label >' +
+                                    '<input type = "number" name="N_Sumes_NumFilas" value="2" min="2" max="10" style="width: 50px ;text-align: right" /> <br />' +
+                                    '<label style = "width: 150px ;text-align: left ">Número de Xifres:</label >' +
+                                    '<input type = "number" name="N_Sumes_NumCifras" value="2" min="1" max="10" style="width: 50px ;text-align: right" />' +
+                                    '</th ></tr ></table > ';
+        }
+        else {
+            ConfRestes.innerHTML = '';
+        }
+    };
+
+
+    function VisibilitatMulti() {
+        if (document.getElementById("MMultiplicacions").checked) {
+            ConfMulti.innerHTML =   '<table width="100%" border = 2 style="text-align: center" ><tr><th width="55%" >  OPCIONS DE MULTIPLICACIONS   </th > <th>' +
+                                    '<input type="checkbox" name="N_01" value="V_01"> 1 </input><input type="checkbox" name="N_02" value="V_02"> 2 </input>' +                                    '<input type="checkbox" name="N_03" value="V_03"> 3</input> ' +
+                                    '<input type="checkbox" name="N_03" value="V_03"> 3 </input><input type="checkbox" name="N_04" value="V_04"> 4 </input>' +
+                                    '<input type="checkbox" name="N_05" value="V_05"> 5 </input><input type="checkbox" name="N_06" value="V_06"> 6 </input>' +
+                                    '<input type="checkbox" name="N_07" value="V_07"> 7 </input><input type="checkbox" name="N_08" value="V_08"> 8 </input>' +
+                                    '<input type="checkbox" name="N_09" value="V_09"> 9 </input><input type="checkbox" name="N_10" value="V_10">10 </input>' +
+                                    '</th></tr></table >';
+        }
+        else {
+            ConfMulti.innerHTML = '';
+        }
+    };
+
+
+</script>
+
+
+<!--<h2>@ViewBag.Title.</h2> -->
+<h3>@ViewBag.Message</h3>
+
+<form name="myForm" action="@Url.Action("Guardar", "Configuracio")" method="POST">
+    <table width="100%" border=0 style="text-align: center" background: "#F0F0F0">
+        <tr>
+            <th width="20%"><input type="checkbox" name="NSumes" id="MSumes" @ViewBag.SumesChecked onchange="VisibilitatSumes()">Sumes</th>
+            <th width="80%">
+                <table width="100%" border=0 style="text-align: center" background: "#F0F0F0<">
+                    <span id="ConfSumes"></span>
+                </table>
+            </th>
+        </tr>
+        <tr>
+            <th width="20%"><input type="checkbox" name="NRestes" id="MRestes" @ViewBag.RestesChecked onchange="VisibilitatRestes()">Restes</th>
+            <th width="80%">
+                <table width="100%" border=0 style="text-align: center" background: "#F0F0F0">
+                    <span id="ConfRestes"></span>
+                </table>
+            </th>
+        </tr>
+        <tr>
+            <th width="20%"><input type="checkbox" name="NMultiplicacions" id="MMultiplicacions" @ViewBag.MultiChecked onchange="VisibilitatMulti()">Multiplicacions</th>
+            <th width="80%">
+                <table width="100%" border=0 style="text-align: center" background: "#F0F0F0">
+                    <span id="ConfMulti"></span>
+                </table>
+            </th>
+        </tr>
+    </table>
+    <input type="submit" value="Guardar" />
+</form>
+    <body onload="VisibilitatSumes(); VisibilitatRestes();VisibilitatMulti()">
+
+    </body>
+
+
